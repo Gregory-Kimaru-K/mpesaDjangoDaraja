@@ -11,10 +11,27 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os 
+from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+##########
+###############
+# Mpesa Spices
+###############
+##########
+
+MPESA_ENVIRONMENT = 'sandbox'
+MPESA_CONSUMER_KEY = os.getenv('MPESA_KEY')
+MPESA_CONSUMER_SECRET = os.getenv('MPESA_SECRET')
+MPESA_SHORTCODE = os.getenv('MPESA_SHORTCODE')
+MPESA_EXPRESS_SHORTCODE = os.getenv('MPESA_SHORTCODE')
+MPESA_SHORTCODE_TYPE = 'paybill'
+MPESA_PASSKEY = os.getenv('MPESA_PASS_KEY')
+MPESA_INITIATOR_USERNAME = os.getenv('INTIATOR_USERNAME')
+MPESA_INITIATOR_SECURITY_CREDENTIAL = os.getenv('INITIATOR_SECURITY_CREDENTIALS')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,7 +42,7 @@ SECRET_KEY = 'django-insecure-mr@2*h#9#_h%mu_f06n)fcjbj7!rva8qt8b93!m+9z9iokki9h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_daraja'
 ]
 
 MIDDLEWARE = [
